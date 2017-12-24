@@ -26,8 +26,9 @@ def main(filename):
     candidates = []
     children = set()
     for prog in programs(filename):
-        candidates.append(prog.name)
-        children = children | prog.children
+        if prog.children:
+            candidates.append(prog.name)
+            children = children | prog.children
 
     for c in candidates:
         if c not in children:
